@@ -75,22 +75,6 @@
 
   <!-- 业务逻辑代码 -->
   <script>
-    // $.ajax({
-    //   type: 'get',
-    //   url: 'http://localhost:8080/api/v1/index/get_comment',
-    //   data: { articleId: '67' },
-    //   success: function (response) {
-    //     console.log(response)
-    //   }
-    // })
-    $.ajax({
-      type: 'get',
-      url: 'http://localhost:8080/api/v1/admin/comment/search',
-      data: { page: 1, perpage: 6 },
-      success: function (response) {
-        console.log(response)
-      }
-    })
   </script>
 </body>
 
