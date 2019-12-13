@@ -27,8 +27,8 @@
             <form class="login_form" id="loginForm">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
-                <input type="text" class="input_txt" name="username" placeholder="邮箱/手机号" />
-                <input type="password" name="password" class="input_pass" placeholder="密码" />
+                <input type="text" class="input_txt" name="username" placeholder="邮箱/手机号" id="username" />
+                <input type="password" name="password" class="input_pass" placeholder="密码" id="password" />
                 <input type="submit" class="input_sub" value="登 录" />
             </form>
         </div>
@@ -59,24 +59,7 @@
     <script src="./js/jquery-1.12.4.min.js"></script>
     <!-- 引入bootstrap的js文件 -->
     <script src="./js/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $('#loginForm').on('submit', function() {
-            // alert('ok')
-            var data = $(this).serialize();
-            //发送ajax请求
-            $.ajax({
-                type: 'post',
-                url: 'http://localhost:8080/api/v1/admin/user/login',
-                data: data,
-                success: function(response) {
-                    console.log(response);
-                    window.localStorage.setItem('token', response.token);
-                    location.href = 'index.html'
-                }
-            })
-            return false;
-        })
-    </script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>
