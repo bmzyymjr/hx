@@ -76,7 +76,7 @@
   <div class="header_bar">
     <form class="search_form">
       <input type="text" placeholder="请输入搜索内容">
-      <i class="iconfont icon-search"></i>
+      <i class="iconfont icon-search" id="keySearch"></i>
     </form>
 
     <div class="user_center_link">
@@ -166,7 +166,11 @@
 
   <!-- 业务逻辑代码 -->
   <script>
-
+      $('#keySearch').on('click', function(){
+         var keyword = $(this).siblings().val();
+         console.log(keyword);
+         
+      })
   </script>
 </body>
 
