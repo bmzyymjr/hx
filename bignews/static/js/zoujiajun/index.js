@@ -85,3 +85,7 @@ $.ajax({
         $('.right_menu').html(rfenlei)
     }
 })
+$('.search_btn').click(function() {
+    var keywords = $('.search_txt').val()
+    location.href = 'list.html?key=' + keywords
+})
