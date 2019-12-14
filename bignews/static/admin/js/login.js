@@ -18,7 +18,6 @@ $('#loginForm').on('submit', function() {
             username: username,
             password: password
         },
-        // console.log(data);
         success: function(response) {
             console.log(response);
             if (response.code == 200) {

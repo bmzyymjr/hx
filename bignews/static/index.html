@@ -138,7 +138,7 @@
         {{each data}}
         <li>
             <span>{{$imports.getfirstname($value.author)}}</span>
-            <b><em>{{$value.author}}</em> {{$value.date}}-{{$value.time}}说:</b>
+            <b><em>{{$value.author}}</em>{{$value.time}}个月前( {{$value.date}})说:</b>
             <strong>{{$value.intro}}</strong>
         </li>
         {{/each}}

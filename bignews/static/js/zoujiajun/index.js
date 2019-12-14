@@ -45,6 +45,13 @@ $.ajax({
     url: "/api/v1/index/latest_comment",
     success: function(data) {
         if (data.code == 200) {
+            var date1 = +new Date()
+            data.data.forEach(item => {
+                var date2 = +new Date(item.date)
+                var lastTime = Math.floor((date1 - date2) / 1000 / 60 / 60 / 24 / 30)
+                item.time = lastTime
+            })
+            console.log(data)
             var html = template('pingluntpl', data)
             $('.comment_list').html(html)
         }
@@ -87,5 +94,14 @@ $.ajax({
 })
 $('.search_btn').click(function() {
     var keywords = $('.search_txt').val()
-    location.href = 'list.html?key=' + keywords
+    $.ajax({
+        type: "get",
+        url: "/api/v1/index/search",
+        data: {
+            key: keywords
+        },
+        success: function(data) {
+            location.href = 'list.html?key=' + keywords
+        }
+    })
 })
