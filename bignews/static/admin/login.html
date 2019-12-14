@@ -22,6 +22,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <div class="login_form_con">
             <div class="login_title"></div>
             <form class="login_form" id="loginForm">
@@ -32,6 +33,17 @@
                 <input type="submit" class="input_sub" value="登 录" />
             </form>
         </div>
+=======
+    <div class="login_form_con">
+      <div class="login_title"></div>
+      <form class="login_form" id="loginForm">
+        <i class="iconfont icon-user"></i>
+        <i class="iconfont icon-key"></i>
+        <input type="text" class="input_txt" placeholder="邮箱/手机号" name="username" />
+        <input type="password" class="input_pass" placeholder="密码" name="password" />
+        <input type="submit" class="input_sub" value="登 录" />
+      </form>
+>>>>>>> a700d2c27faccae2ad9fe5cf48731db70e8a74f3
     </div>
 
     <!-- 模态框 -->
@@ -59,7 +71,30 @@
     <script src="./js/jquery-1.12.4.min.js"></script>
     <!-- 引入bootstrap的js文件 -->
     <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
     <script src="login.js"></script>
+=======
+    <script>
+        $('#loginForm').on('submit',function(){
+      // alert('ok')
+      var data=$(this).serialize();
+      //发送ajax请求
+      $.ajax({
+        type:'post',
+        url:'http://localhost:8080/api/v1/admin/user/login',
+        data:data,
+        success:function(response){
+          console.log(response);
+          window.localStorage.setItem('token',response.token);
+          location.href='index.html'
+          
+        }
+      })
+      return false;
+    })
+
+    </script>
+>>>>>>> a700d2c27faccae2ad9fe5cf48731db70e8a74f3
 </body>
 
 </html>
