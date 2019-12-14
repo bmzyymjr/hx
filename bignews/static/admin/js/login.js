@@ -1,4 +1,4 @@
-$('#loginForm').on('submit', function() {
+$('#loginForm').on('submit', function () {
     // 获取用户的信息
     var username = $('#username').val()
     var password = $('#password').val()
@@ -19,7 +19,7 @@ $('#loginForm').on('submit', function() {
             password: password
         },
         // console.log(data);
-        success: function(response) {
+        success: function (response) {
             console.log(response);
             if (response.code == 200) {
                 console.log(response);
@@ -29,7 +29,7 @@ $('#loginForm').on('submit', function() {
                 alert(response.msg);
             }
         },
-        error: function() {
+        error: function () {
             alert(response.msg);
         }
     })
