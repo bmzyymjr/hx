@@ -87,5 +87,14 @@ $.ajax({
 })
 $('.search_btn').click(function() {
     var keywords = $('.search_txt').val()
-    location.href = 'list.html?key=' + keywords
+    $.ajax({
+        type: "get",
+        url: "/api/v1/index/search",
+        data: {
+            key: keywords
+        },
+        success: function(data) {
+            location.href = 'list.html?key=' + keywords
+        }
+    })
 })
