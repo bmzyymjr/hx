@@ -24,7 +24,7 @@ $('#loginForm').on('submit', function() {
             if (response.code == 200) {
                 console.log(response);
                 window.localStorage.setItem('token', response.token)
-                // location.href = 'index.html'
+                location.href = 'index.html'
             } else {
                 alert(response.msg);
             }
