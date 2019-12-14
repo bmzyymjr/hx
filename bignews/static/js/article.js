@@ -2,7 +2,7 @@
 $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/rank',
-    success: function(response){
+    success: function(response) {
         // console.log(response);
         var html = template('hotTpl', {
             data: response.data
@@ -15,7 +15,7 @@ $.ajax({
 $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/latest_comment',
-    success: function(response){
+    success: function(response) {
         // console.log(response);
         var html = template('newCommentTpl', {
             data: response.data
@@ -28,7 +28,7 @@ $.ajax({
 $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/attention',
-    success: function(response){
+    success: function(response) {
         // console.log(response);
         var html = template('focusTpl', {
             data: response.data
@@ -39,37 +39,37 @@ $.ajax({
 
 // 文章详情
 $.ajax({
-    url: 'http://localhost:8080/api/v1/index/article',
-    type: 'get',
-    data: {id: location.search.substr(4)},
-    success: function(response){
-        console.log(response);
-        var html = template('detailTpl', {
-            data: response.data
-        })
-        $('#articleDetail').html(html);
-        var id = response.data.id;
-        $('#pushComment').attr('data-id', id);
-        $('#contentList').attr('data-id', id);
-    }
-})
-// 发布评论功能
-$('#newComment').on('submit',function(){
+        url: 'http://localhost:8080/api/v1/index/article',
+        type: 'get',
+        data: { id: location.search.substr(4) },
+        success: function(response) {
+            console.log(response);
+            var html = template('detailTpl', {
+                data: response.data
+            })
+            $('#articleDetail').html(html);
+            var id = response.data.id;
+            $('#pushComment').attr('data-id', id);
+            $('#contentList').attr('data-id', id);
+        }
+    })
+    // 发布评论功能
+$('#newComment').on('submit', function() {
     var id = $('#pushComment').attr('data-id');
-    var author =$('#author').val()
-    var content =$('#content').val()
-    
+    var author = $('#author').val()
+    var content = $('#content').val()
+
     $.ajax({
         type: 'post',
         url: 'http://localhost:8080/api/v1/index/post_comment',
         data: {
-            author:author,
-            content:content,
-            articleId:id
+            author: author,
+            content: content,
+            articleId: id
         },
-        success: function(){
-            alert(123)
-            
+        success: function() {
+            alert('评论成功')
+            location.reload()
         }
     })
     return false;
@@ -78,20 +78,20 @@ $('#newComment').on('submit',function(){
 // 评论列表展示
 var id = location.search.substr(4);
 $.ajax({
-    type: 'get',
-    url: 'http://localhost:8080/api/v1/index/get_comment',
-    data: {
-        articleId: id
-    },
-    success: function(response){
-        console.log(response);
-        var html = template('newCommentTpl1', {
-            data: response.data
-        })
-        $('#contentBox').html(html);
-    }
-})
-//分类
+        type: 'get',
+        url: 'http://localhost:8080/api/v1/index/get_comment',
+        data: {
+            articleId: id
+        },
+        success: function(response) {
+            console.log(response);
+            var html = template('newCommentTpl1', {
+                data: response.data
+            })
+            $('#contentBox').html(html);
+        }
+    })
+    //分类
 $.ajax({
     type: "get",
     url: "/api/v1/index/category",
@@ -111,4 +111,19 @@ $.ajax({
     }
 })
 
+//搜索
+$('.search_btn').click(function() {
+    var keywords = $('.search_txt').val()
+    $.ajax({
+        type: "get",
+        url: "/api/v1/index/search",
+        data: {
+            key: keywords
+        },
+        success: function(data) {
+            console.log(data);
 
+            location.href = 'list.html?key=' + keywords
+        }
+    })
+})

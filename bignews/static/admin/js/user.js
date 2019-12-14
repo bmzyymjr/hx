@@ -18,7 +18,6 @@ $('#userForm').on('submit', function() {
                 contentType: false,
                 success: function(result) {
                     alert('信息修改成功');
-
                     location.reload();
                 }
             })

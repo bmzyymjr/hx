@@ -92,6 +92,8 @@ $.ajax({
         $('.right_menu').html(rfenlei)
     }
 })
+
+//搜索
 $('.search_btn').click(function() {
     var keywords = $('.search_txt').val()
     $.ajax({
@@ -101,6 +103,8 @@ $('.search_btn').click(function() {
             key: keywords
         },
         success: function(data) {
+            console.log(data);
+
             location.href = 'list.html?key=' + keywords
         }
     })

@@ -16,8 +16,8 @@
     <div class="sider">
         <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
         <div class="user_info">
-            <img src="images/2.jpg" alt="person">
-            <span>欢迎&nbsp;&nbsp;李思思</span>
+            <img src="images/2.jpg" alt="person" id="userimg">
+            <span id="adminusername">欢迎&nbsp;&nbsp;李思思</span>
             <b>管理员</b>
         </div>
         <div class="menu">
@@ -72,23 +72,6 @@
             </div>
         </div>
     </div>
-
-    <div class="header_bar">
-        <form class="search_form">
-            <input type="text" placeholder="请输入搜索内容">
-            <i class="iconfont icon-search"></i>
-        </form>
-
-        <div class="user_center_link">
-            <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
-            <img src="images/2.jpg" alt="person">
-            <a href="#" id="logout"><i class="iconfont icon-tuichu"></i> 退出</a>
-        </div>
-    </div>
-    <div class="main" id="main_body">
-        <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
-    </div>
-
     <div class="header_bar">
         <form class="search_form">
             <input type="text" placeholder="请输入搜索内容">
@@ -97,42 +80,32 @@
 
         <div class="user_center_link">
             <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
-            <img src="images/2.jpg" alt="person">
-            <a href="#"><i class="iconfont icon-tuichu"></i> 退出</a>
+            <img src="images/2.jpg" alt="person" id="img2">
+            <a href="#" id="logout"><i class="iconfont icon-tuichu"></i> 退出</a>
         </div>
 
-        <div class="header_bar">
-            <form class="search_form">
-                <input type="text" placeholder="请输入搜索内容">
-                <i class="iconfont icon-search" id="keySearch"></i>
-            </form>
-
-            <div class="user_center_link">
-                <a href="user.html" onclick="setMenu(3,0)" target="main_frame">个人中心</a>
-                <img src="images/2.jpg" alt="person">
-                <a href="#"><i class="iconfont icon-tuichu"></i> 退出</a>
-            </div>
-
-            <!-- 模态框 -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">温馨提示!</h4>
-                        </div>
-                        <div class="modal-body">
-                            你确定要退出吗?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary">确定</button>
-                        </div>
+        <!-- 模态框 -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">温馨提示!</h4>
+                    </div>
+                    <div class="modal-body">
+                        你确定要退出吗?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">确定</button>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="main" id="main_body">
+        <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
+    </div>
 
     </div>
     <script src="js/jquery-1.12.4.min.js"></script>
@@ -190,6 +163,18 @@
         }
     </script>
     <script src="js/logout.js"></script>
+    <script>
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/api/v1/admin/user/info",
+            success: function(data) {
+                $('#adminusername').html('欢迎&nbsp;&nbsp;' + data.data.nickname)
+                console.log(data);
+                $('#userimg').attr('src', data.data.userPic)
+                $('#img2').attr('src', data.data.userPic)
+            }
+        })
+    </script>
 </body>
 
 </html>
