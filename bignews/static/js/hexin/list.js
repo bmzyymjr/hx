@@ -74,6 +74,7 @@ if (location.search) {
             success: function (response) {
                 console.log(response)
                 nav = Math.ceil(response.data.totalCount / 6)
+                response.data.data[0].category = ''
                 var html = template('articlelistTpl', { data: response.data.data })
                 $('#articlelist').html(html)
             }
