@@ -1,5 +1,4 @@
 //获取统计数据
-
 $.ajax({
         type: "get",
         url: "http://localhost:8080/api/v1/admin/data/info",
@@ -17,7 +16,6 @@ $.ajax({
     success: function(data) {
         var oChart = echarts.init(document.getElementById('curve_show'));
         var aList_all = data.date;
-
         let aCount = [];
         let aDate = [];
         for (var i = 0; i < aList_all.length; i++) {
@@ -121,12 +119,14 @@ $.ajax({
     type: "get",
     url: "/api/v1/admin/data/category",
     success: function(data) {
-        console.log(data);
+        var colorshuzu = []
         var wenzhangfenlei = []
         var tongji = []
         for (var i = 0; i < data.date.length; i++) {
             wenzhangfenlei.push(data.date[i].name)
             tongji.push({ value: data.date[i].articles, name: data.date[i].name })
+            var color = getRandomColor()
+            colorshuzu.push(color)
         }
         var oPie = echarts.init(document.getElementById('pie_show'));
         var oPieopt = {
@@ -139,7 +139,7 @@ $.ajax({
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            color: ['#5885e8', '#13cfd5', '#00ce68', '#ff9565'],
+            color: colorshuzu,
             legend: {
                 x: 'center',
                 top: 65,
@@ -203,7 +203,6 @@ $.ajax({
     type: "get",
     url: "/api/v1/admin/data/visit",
     success: function(data) {
-        console.log(data);
         var obj = data.data
 
         //声明一个空数据,用于存放遍历出来的日期

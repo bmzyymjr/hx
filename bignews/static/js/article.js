@@ -36,3 +36,14 @@ $.ajax({
         $('#focusBox').html(html);
     }
 })
+
+// 文章详情
+$.ajax({
+    url: 'http://localhost:8080/api/v1/index/article',
+    type: 'get',
+    data: {id: '4'},
+    success: function(response){
+        console.log(response);
+        
+    }
+})
