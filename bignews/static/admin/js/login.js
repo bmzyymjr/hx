@@ -1,4 +1,4 @@
-$('#loginForm').on('submit', function () {
+$('#loginForm').on('submit', function() {
     // 获取用户的信息
     var username = $('#username').val()
     var password = $('#password').val()
@@ -18,12 +18,7 @@ $('#loginForm').on('submit', function () {
             username: username,
             password: password
         },
-<<<<<<< HEAD
-        // console.log(data);
-        success: function (response) {
-=======
         success: function(response) {
->>>>>>> dc1a298a7c95fa2966debf85590d859196917cc4
             console.log(response);
             if (response.code == 200) {
                 console.log(response);
@@ -33,7 +28,7 @@ $('#loginForm').on('submit', function () {
                 alert(response.msg);
             }
         },
-        error: function () {
+        error: function() {
             alert(response.msg);
         }
     })
