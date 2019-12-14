@@ -29,14 +29,11 @@ $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/admin/user/detail',
     success: function(response) {
-        console.log(response);
         // 把用户信息显示在表单中
         $('#userForm input[name="username"]').val(response.data.username);
         $('#userForm input[name="nickname"]').val(response.data.nickname);
         $('#userForm input[name="email"]').val(response.data.email);
         // img标签设置src
-        console.log(response.data.userPic);
-
         $('#preview').attr('src', response.data.userPic);
         $('#userForm input[name="password"]').val(response.data.password);
     },

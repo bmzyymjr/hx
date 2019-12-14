@@ -169,7 +169,6 @@
             url: "http://localhost:8080/api/v1/admin/user/info",
             success: function(data) {
                 $('#adminusername').html('欢迎&nbsp;&nbsp;' + data.data.nickname)
-                console.log(data);
                 $('#userimg').attr('src', data.data.userPic)
                 $('#img2').attr('src', data.data.userPic)
             }

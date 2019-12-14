@@ -19,9 +19,7 @@ $('#loginForm').on('submit', function() {
             password: password
         },
         success: function(response) {
-            console.log(response);
             if (response.code == 200) {
-                console.log(response);
                 window.localStorage.setItem('token', response.token)
                 location.href = 'index.html'
             } else {

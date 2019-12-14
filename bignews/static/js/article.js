@@ -43,7 +43,6 @@ $.ajax({
         type: 'get',
         data: { id: location.search.substr(4) },
         success: function(response) {
-            console.log(response);
             var html = template('detailTpl', {
                 data: response.data
             })
@@ -84,10 +83,10 @@ $.ajax({
             articleId: id
         },
         success: function(response) {
-            console.log(response);
             var html = template('newCommentTpl1', {
                 data: response.data
             })
+            $('#pinglunshuliang').html(response.data.length)
             $('#contentBox').html(html);
         }
     })
@@ -96,17 +95,13 @@ $.ajax({
     type: "get",
     url: "/api/v1/index/category",
     success: function(data) {
-        console.log(data);
         var html = template('fenleixialatpl', data)
         $('.level_two').html(html);
         var leftsj = data.data.slice(0, data.data.length - 1)
         var fenlei = template('fenleitpl', leftsj)
         $('.left_menu').html(fenlei)
         var rightsj = data.data.slice(length - 1, data.data.length)
-        console.log(rightsj);
-
         var rfenlei = template('fenleitpl2', rightsj)
-        console.log(rfenlei);
         $('.right_menu').html(rfenlei)
     }
 })
@@ -121,7 +116,6 @@ $('.search_btn').click(function() {
             key: keywords
         },
         success: function(data) {
-            console.log(data);
 
             location.href = 'list.html?key=' + keywords
         }

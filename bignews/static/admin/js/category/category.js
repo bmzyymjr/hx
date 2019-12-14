@@ -56,7 +56,6 @@ $('#model_add').click(function(){
             slug: slug
         },
         success: function(response){
-            console.log(response);
             location.reload();
         }
     })
@@ -71,7 +70,6 @@ $('#categoryBox').on('click', '.delete', function(){
       url: 'http://localhost:8080/api/v1/admin/category/delete',
       data: {id: id},
       success: function(response){
-        console.log(response);
       }
     })
     if(confirm('您确定要删除该分类吗')){

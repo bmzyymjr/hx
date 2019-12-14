@@ -5,7 +5,6 @@ $.ajax({
         type: 'get',
         url: 'http://localhost:8080/api/v1/admin/category/list',
         success: function(response) {
-            console.log(response)
             var html = template('categorylistTpl', { data: response.data })
             $("#categorylist").html(html)
             $('#categories').html(html)
@@ -48,18 +47,15 @@ $.ajax({
         }
     })
     // 获取分类列表内容并展示在页面上
-console.log(location.search)
 if (location.search) {
     var par = location.search.substr(1).split('=')[0]
     var params = location.search.substr(1).split('=')[1]
-    console.log(par, params)
     if (par == 'id') {
         $.ajax({
             type: 'get',
             url: 'http://localhost:8080/api/v1/index/search',
             data: { type: params },
             success: function(response) {
-                console.log(response)
                 nav = Math.ceil(response.data.totalCount / 6)
                 var html = template('articlelistTpl', { data: response.data.data })
                 $('#articlelist').html(html)
@@ -72,7 +68,6 @@ if (location.search) {
             url: 'http://localhost:8080/api/v1/index/search',
             data: { key: params },
             success: function(response) {
-                console.log(response)
                 nav = Math.ceil(response.data.totalCount / 6)
                     // response.data.data[0].category = '搜索结果'
                 var html = template('articlelistTpl', { data: response.data.data })
@@ -86,7 +81,6 @@ if (location.search) {
         url: 'http://localhost:8080/api/v1/index/search',
         data: { type: 1 },
         success: function(response) {
-            console.log(response)
             nav = Math.ceil(response.data.totalCount / 6)
             var html = template('articlelistTpl', { data: response.data.data })
             $('#articlelist').html(html)
@@ -126,7 +120,6 @@ $(function() {
             // 为分页数添加点击事件
         $('#pagination').on('click', 'a', function() {
             var current = $(this).text()
-            console.log($(this).text())
             if (current == '上一页') {
                 text = text - 1
                 categoryId(articleId, text)
@@ -167,7 +160,6 @@ function categoryId(ids, index) {
         url: 'http://localhost:8080/api/v1/index/search',
         data: { type: ids, page: index },
         success: function(response) {
-            console.log(response)
             nav = Math.ceil(response.data.totalCount / 6)
             var html = template('articlelistTpl', { data: response.data.data })
             $('#articlelist').html(html)
