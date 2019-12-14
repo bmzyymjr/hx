@@ -22,17 +22,8 @@
       </div>
     </div>
 
-    <div class="login_form_con">
-      <div class="login_title"></div>
-      <form class="login_form" id="loginForm">
-        <i class="iconfont icon-user"></i>
-        <i class="iconfont icon-key"></i>
-        <input type="text" class="input_txt" placeholder="邮箱/手机号" name="username" />
-        <input type="password" class="input_pass" placeholder="密码" name="password" />
-        <input type="submit" class="input_sub" value="登 录" />
-      </form>
-    </div>
 
+<<<<<<< HEAD
     <!-- 模态框 -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -76,8 +67,47 @@
         })
         return false;
       })
+=======
+        <div class="login_form_con">
+            <div class="login_title"></div>
+            <form class="login_form" id="loginForm">
+                <i class="iconfont icon-user"></i>
+                <i class="iconfont icon-key"></i>
+                <input type="text" class="input_txt" name="username" placeholder="邮箱/手机号" id="username" />
+                <input type="password" name="password" class="input_pass" placeholder="密码" id="password" />
+                <input type="submit" class="input_sub" value="登 录" />
+            </form>
+        </div>
 
-    </script>
+
+
+        <!-- 模态框 -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+            关闭
+          </button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> dc1a298a7c95fa2966debf85590d859196917cc4
+
+        <!-- 引入jq文件 -->
+        <script src="./js/jquery-1.12.4.min.js"></script>
+        <!-- 引入bootstrap的js文件 -->
+        <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./js/login.js"></script>
 </body>
 
 </html>
