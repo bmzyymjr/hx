@@ -30,33 +30,13 @@
           </tr>
         </thead>
         <tbody id="commentBox">
-          <tr>
-            <td>小周</td>
-            <td>这是一条测试评论，欢迎光临</td>
-            <td>《世界，你好》</td>
-            <td>2017-07-04 12:00:00</td>
-            <td>已批准</td>
-            <td class="text-center">
-              <a href="javascript:;" class="btn btn-warning btn-xs">拒绝</a>
-              <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-            </td>
-          </tr>
+
         </tbody>
       </table>
 
       <div class="row text-center">
-        <ul class="pagination pagination-sm">
-          <li class="page-item first disabled"><a href="#" class="page-link">首页</a></li>
-          <li class="page-item prev disabled"><a href="#" class="page-link">上一页</a></li>
-          <li class="page-item active"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">4</a></li>
-          <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">6</a></li>
-          <li class="page-item"><a href="#" class="page-link">7</a></li>
-          <li class="page-item next"><a href="#" class="page-link">下一页</a></li>
-          <li class="page-item last"><a href="#" class="page-link">尾页</a></li>
+        <ul class="pagination pagination-sm" id="lists">
+
         </ul>
       </div>
 
@@ -74,8 +54,43 @@
   </script>
 
   <!-- 业务逻辑代码 -->
+  <script type="text/html" id="comment-listTpl">
+    {{each data}}
+    <tr>
+      <td>{{$value.author}}</td>
+      <td>{{$value.content}}</td>
+      <td>《{{$value.title}}》</td>
+      <td>{{$value.date}} {{$value.time}}</td>
+      <td>{{$value.state}}</td>
+      <td class="text-center">
+        <a href="javascript:;" class="btn btn-warning btn-xs edit" data-id="{{$value.id}}" data-state='{{$value.state}}'>{{$value.state=='已拒绝'?'批准':'拒绝'}}</a>
+        <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id="{{$value.id}}">删除</a>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <script type="text/html" id="listsTpl">
+    <li class="page-item first {{page<=1?'disabled':''}}"><a href="#" class="page-link"  onclick="changePage({{1}})">首页</a></li>
+    {{if page>1}}
+    <li class="page-item prev {{page<=1?'disabled':''}}"><a href="#" class="page-link"  onclick="changePage({{page - 1}})">上一页</a></li>
+    {{/if}}
+    {{if(page>3)}}
+    <%for(var i=page-3 ;  i<page+3&&i<totalPage ; i++){%>
+    <li class="page-item {{page==i+1?'active':''}} pageclick" data-index="<%=i+1%>"><a href="#"><%=i+1%></a></li>
+    <%}%>
+    {{else}}
+    <%for(var i=0 ;  i<6 ; i++){%>
+    <li class="page-item {{page==i+1?'active':''}} pageclick" data-index="<%=i+1%>"><a href="#"><%=i+1%></a></li>
+    <%}%>
+    {{/if}}
+    {{if page < totalPage}}
+    <li class="page-item next {{page>=totalPage?'disabled':''}}"><a href="#" class="page-link"  onclick="changePage({{page - 0 + 1}})">下一页</a></li>
+    {{/if}}
+    <li class="page-item last {{page>=totalPage?'disabled':''}}"><a href="#" class="page-link"  onclick="changePage({{totalPage}})">尾页</a></li>
+  </script>
   <script>
   </script>
+  <script src="./js/hexin/comment_list.js"></script>
 </body>
 
 </html>
