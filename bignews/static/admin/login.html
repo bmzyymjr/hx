@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <!-- 引入bootstrap的css文件 -->
     <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css" />
+    <script src="./js/zoujiajun/yanzhengma.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,11 @@
                 <i class="iconfont icon-key"></i>
                 <input type="text" class="input_txt" name="username" placeholder="邮箱/手机号" id="username" />
                 <input type="password" name="password" class="input_pass" placeholder="密码" id="password" />
-                <input type="submit" class="input_sub" value="登 录" />
+                <div class="yanzhengma">
+                    <input type="text" value="" class="yanzhengmaipt" placeholder="验证码" id="code_input" />
+                    <div id="v_container" style="width: 120px;height: 37px;" class="yanzhengmakuang"></div>
+                </div>
+                <input type="submit" class="input_sub" value="登 录" id="my_button" />
             </form>
         </div>
 
