@@ -56,7 +56,7 @@
   <!-- 业务逻辑代码 -->
   <script type="text/html" id="comment-listTpl">
     {{each data}}
-    <tr>
+    <tr class="{{$value.state=='已拒绝'?'danger':''}}">
       <td>{{$value.author}}</td>
       <td>{{$value.content}}</td>
       <td>《{{$value.title}}》</td>
