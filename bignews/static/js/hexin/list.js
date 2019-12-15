@@ -68,10 +68,13 @@ if (location.search) {
             url: 'http://localhost:8080/api/v1/index/search',
             data: { key: params },
             success: function (response) {
-                nav = Math.ceil(response.data.totalCount / 6)
-                // response.data.data[0].category = '搜索结果'
-                var html = template('articlelistTpl', { data: response.data.data })
-                $('#articlelist').html(html)
+                if (response.data.data.length >= 1) {
+                    nav = Math.ceil(response.data.totalCount / 6)
+                    response.data.data[0].key = 1
+                    // response.data.data[0].category = '搜索结果'
+                    var html = template('articlelistTpl', { data: response.data.data })
+                    $('#articlelist').html(html)
+                }
             }
         })
     }
